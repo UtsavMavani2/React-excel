@@ -2,6 +2,7 @@
 // import './App.css';
 
 // const App = () => {
+
 //   const [rows, setRows] = useState([{ id: '', name: '', salary: '', address: '' }]);
 //   const [savedData, setSavedData] = useState([]);
 //   const inputRefs = useRef([[]]);
@@ -116,9 +117,6 @@
 
 // export default App;
 
-
-
-
 // import React, { useState, useRef, useEffect } from 'react';
 // import './App.css';
 
@@ -205,20 +203,26 @@
 
 // export default App;
 
-
-
-
 // App.js
-import React, { useState, useRef, useEffect } from 'react';
-import './App.css';
+import React, { useState, useRef, useEffect } from "react";
+import "./App.css";
 
 const App = () => {
-  const [rows, setRows] = useState(Array.from({ length: 5 }, () => ({ id: '', name: '', salary: '', address: '' })));
+  const [rows, setRows] = useState(
+    Array.from({ length: 5 }, () => ({
+      id: "",
+      name: "",
+      salary: "",
+      address: "",
+    }))
+  );
   const inputRefs = useRef([[]]);
 
   useEffect(() => {
     // Ensure inputRefs array has the correct length
-    inputRefs.current = rows.map((row, rowIndex) => inputRefs.current[rowIndex] || []);
+    inputRefs.current = rows.map(
+      (row, rowIndex) => inputRefs.current[rowIndex] || []
+    );
   }, [rows]);
 
   const handleInputChange = (e, rowIndex, key) => {
@@ -228,7 +232,7 @@ const App = () => {
   };
 
   const handleKeyPress = (e, rowIndex, keyIndex) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       e.preventDefault();
       const nextKeyIndex = (keyIndex + 1) % 4;
 
@@ -236,7 +240,7 @@ const App = () => {
         // When Enter is pressed on the last column (address), move to the first field of the next row
         if (rowIndex === rows.length - 1) {
           // Add a new row if we're at the last row
-          setRows([...rows, { id: '', name: '', salary: '', address: '' }]);
+          setRows([...rows, { id: "", name: "", salary: "", address: "" }]);
           setTimeout(() => {
             inputRefs.current[rowIndex + 1][0].focus();
           }, 0);
@@ -278,7 +282,7 @@ const App = () => {
                 <td key={keyIndex}>
                   <input
                     ref={(el) => setInputRef(el, rowIndex, keyIndex)}
-                    type={key === 'salary' ? 'number' : 'text'}
+                    type={key === "salary" ? "number" : "text"}
                     value={row[key]}
                     onChange={(e) => handleInputChange(e, rowIndex, key)}
                     onKeyPress={(e) => handleKeyPress(e, rowIndex, keyIndex)}
