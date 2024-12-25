@@ -2,7 +2,6 @@
 // import './App.css';
 
 // const App = () => {
-
 //   const [rows, setRows] = useState([{ id: '', name: '', salary: '', address: '' }]);
 //   const [savedData, setSavedData] = useState([]);
 //   const inputRefs = useRef([[]]);
